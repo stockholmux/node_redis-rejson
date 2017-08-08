@@ -1,0 +1,24 @@
+{
+  "name": "redis-rejson",
+  "version": "1.0.0",
+  "description": "ReJSON redis module bindings for node_redis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stockholmux/node_redis-rejson.git"
+  },
+  "keywords": [
+    "redis",
+    "json",
+    "rejson"
+  ],
+  "author": "Kyle J Davis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stockholmux/node_redis-rejson/issues"
+  },
+  "homepage": "https://github.com/stockholmux/node_redis-rejson#readme"
+}
