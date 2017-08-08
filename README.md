@@ -14,4 +14,4 @@ var
 rejson(redis);
 ```
 
-The ReJSON commands will be mapped to javascript-friendly names (`json.get` becomes `client.json_get`).
+The ReJSON commands will be mapped to javascript-friendly names (`JSON.GET` becomes `client.json_get`).
