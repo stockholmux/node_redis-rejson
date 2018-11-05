@@ -7,11 +7,24 @@ To use this module, you will need Redis 4.0 or higher and the rejson module inst
 ## Usage
 
 ```
-var
-   redis       = require('redis'),
-   rejson      = require('redis-rejson');
+const
+  redis = require('redis'),
+  rejson = require('redis-rejson');
 
-rejson(redis);
+rejson(redis); /* important - this must come BEFORE creating the client */
+
+let client = redis.createClient({ password: 'yourredispassword' });
+
+client.json_set('my-json', '.', '{"test":1234}', function (err) {
+  if (err) { throw err; }
+  console.log('Set JSON at key 'my-json'.');
+  client.json_get('my-json', '.test', function (err, value) {
+    if (err) { throw err; }
+    console.log('value of test:', value); //outputs 1234
+    client.quit();
+  });
+});
+
 ```
 
 The ReJSON commands will be mapped to javascript-friendly names (`JSON.GET` becomes `client.json_get`).
