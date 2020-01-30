@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/redis-rejson.svg)](https://badge.fury.io/js/redis-rejson)
+
 # ReJSON Module plugin for node_redis
 
 This package allows [node_redis](https://github.com/NodeRedis/node_redis) (2.8+) to interface with the Redis module [ReJSON](http://rejson.io/).
