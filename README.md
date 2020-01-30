@@ -1,3 +1,4 @@
+[![Actions Status](https://github.com/stockholmux/node_redis-rejson/workflows/CI/badge.svg)](https://github.com/stockholmux/node_redis-rejson/actions)
 [![npm version](https://badge.fury.io/js/redis-rejson.svg)](https://badge.fury.io/js/redis-rejson)
 
 # RedisJSON Module plugin for node_redis
