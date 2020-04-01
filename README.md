@@ -15,17 +15,18 @@ const
 
 rejson(redis); /* important - this must come BEFORE creating the client */
 
-let client = redis.createClient({ password: 'yourredispassword' });
-
-client.json_set('my-json', '.', '{"test":1234}', function (err) {
+let client = redis.createClient();
+let my_json_key = 'my_json';
+client.json_set(my_json_key, '.', '{"test":1234}', function (err) {
   if (err) { throw err; }
-  console.log('Set JSON at key ' + my-json + '.');
-  client.json_get('my-json', '.test', function (err, value) {
+  console.log('Set JSON at key ' + my_json_key + '.');
+  client.json_get(my_json_key, '.test', function (err, value) {
     if (err) { throw err; }
     console.log('value of test:', value); //outputs 1234
     client.quit();
   });
 });
+
 
 ```
 
