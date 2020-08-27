@@ -1,6 +1,6 @@
 {
   "name": "redis-rejson",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ReJSON redis module bindings for node_redis",
   "main": "index.js",
   "scripts": {
