@@ -9,7 +9,7 @@ To use this module, you will need Redis 4.0 or higher and the rejson module inst
 
 ## Usage
 
-```
+```javascript
 const
   redis = require('redis'),
   rejson = require('redis-rejson');
@@ -27,8 +27,47 @@ client.json_set(my_json_key, '.', '{"test":1234}', function (err) {
     client.quit();
   });
 });
-
-
 ```
 
 The RedisJSON commands will be mapped to javascript-friendly names (`JSON.GET` becomes `client.json_get`).
+
+### Async Await Usage
+
+If you want to use ES6+ `async/await` syntax.
+
+Technique taken from the [redis module docs](https://www.npmjs.com/package/redis#promises)
+
+```javascript
+// require promisify
+const
+  redis = require('redis'),
+  rejson = require('redis-rejson')
+  { promisify } = require('util')
+
+// important - this must come BEFORE creating the client
+rejson(redis);
+
+// see redis module documentation for more connection options
+const redisClient = redis.createClient({host: '...'}) 
+
+// create promisify versions of the commands 
+const redis_jget = promisify(redisClient.json_get).bind(redisClient)
+const redis_jset = promisify(redisClient.json_set).bind(redisClient)
+
+// Not shown: using inside an async function
+let setResponse = await redis_jset('my_json', '.', {hello: 'world'})
+let getResponse = await redis_jget('my_json', '.')
+```
+
+### Use redis module commands
+
+You still have access to all the redis module commands. I will show how to do so with the `async/await` syntax.
+
+```javascript
+// promisify redis commands just like rejson commands
+const redis_keys = promisify(redisClient.keys).bind(redisClient)
+
+// Not shown: using inside an async function
+// Get all keys
+let keys = await redis_keys('*')
+```
