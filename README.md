@@ -9,7 +9,7 @@ To use this module, you will need Redis 4.0 or higher and the rejson module inst
 
 ## Usage
 
-```
+```js
 const
   redis = require('redis'),
   rejson = require('redis-rejson');
