@@ -1,10 +1,16 @@
 {
   "name": "redis-rejson",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "ReJSON redis module bindings for node_redis",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "npm run build",
+    "build": "tsup ./src/index.ts --dts",
+    "test": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,5 +26,14 @@
   "bugs": {
     "url": "https://github.com/stockholmux/node_redis-rejson/issues"
   },
-  "homepage": "https://github.com/stockholmux/node_redis-rejson#readme"
+  "homepage": "https://github.com/stockholmux/node_redis-rejson#readme",
+  "devDependencies": {
+    "@types/redis": "^2.8.30",
+    "redis": "^3.1.2",
+    "tsup": "^4.11.2",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "redis-rejson": "^1.0.0"
+  }
 }
